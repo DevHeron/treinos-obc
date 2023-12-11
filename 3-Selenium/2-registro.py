@@ -7,11 +7,20 @@ import time
 
 browser = webdriver.Chrome()
 browser.get('https://registro.br')
+time.sleep(2)
 
 # 2 - Buscando elementos
 elem = browser.find_element(By.ID, 'is-avail-field')
 elem.clear()
 elem.send_keys('botscompython.com.br')
 elem.send_keys(Keys.ENTER)
+time.sleep(3)
 browser.save_screenshot('dominio.png')
-time.sleep(5) 
+
+
+# 3 - buscando informações
+results = browser.find_elements(By.TAG_NAME, 'strong')
+# import pdb
+# pdb.set_trace()
+print(f'domínio{results[1].text} está {results[2].text}')
+
